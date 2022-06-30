@@ -16,6 +16,10 @@ namespace MauiApp5
 			{
 				this.BindCommand(ViewModel,vm => vm.NavigateToAnotherViewModel, view => view.NavigateBtn)
 					.DisposeWith(disposable);
+				this.BindCommand(ViewModel,vm => vm.NavigateToAnotherViewModel2, view => view.NavigateBtn2)
+					.DisposeWith(disposable);
+				this.BindCommand(ViewModel,vm => vm.NavigateToAnotherViewModel3, view => view.NavigateBtn3)
+					.DisposeWith(disposable);
 			});
 		}
 	}

@@ -54,4 +54,16 @@
 		<PackageReference Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'" Include="ReactiveUI.WinUI" Version="18.2.5" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="AnotherPage2.xaml.cs">
+	    <DependentUpon>AnotherPage2.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AnotherPage2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
