@@ -13,22 +13,19 @@ namespace MauiApp5.ViewModels
             NavigateToAnotherViewModel = ReactiveCommand
                 .CreateFromObservable(() => HostScreen.Router.Navigate.Execute(new AnotherViewModel()));
 
-            NavigateToAnotherViewModel2 = ReactiveCommand.Create(() =>
+            NavigateToAnotherViewModel2 = ReactiveCommand.CreateFromObservable(() =>
             {
-                HostScreen.Router.NavigationStack.Clear();
-                HostScreen.Router.NavigationStack.AddRange(new IRoutableViewModel[]
-                {
-                    new AnotherViewModel(),
-                    new AnotherViewModel2()
-                });
-            });
+                HostScreen.Router.NavigationStack.Add(new AnotherViewModel());
 
-            NavigateToAnotherViewModel3 = ReactiveCommand.Create(() =>
+				return HostScreen.Router.Navigate.Execute(new AnotherViewModel2());
+			});
+
+            NavigateToAnotherViewModel3 = ReactiveCommand.CreateFromObservable(() =>
             {
                 HostScreen.Router.NavigationStack.Clear();
                 HostScreen.Router.NavigationStack.Add(new AnotherViewModel());
 
-                HostScreen.Router.Navigate.Execute(new AnotherViewModel2()).Subscribe();
+                return HostScreen.Router.Navigate.Execute(new AnotherViewModel2());
             });
         }
         public string UrlPathSegment => "Main page";

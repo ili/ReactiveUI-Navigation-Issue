@@ -14,9 +14,11 @@ namespace MauiApp5
             Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetExecutingAssembly());
             Locator.CurrentMutable.RegisterConstant(this, typeof(IScreen));
 
+            Router.NavigationStack.Add(new MainPageViewModel());
+
             Router
-                .NavigateAndReset
-                .Execute(new MainPageViewModel())
+                .Navigate
+                .Execute(new AnotherViewModel2())
                 .Subscribe();
         }
 
@@ -24,7 +26,7 @@ namespace MauiApp5
 
         public Page CreateMainPage()
         {
-            return new ReactiveUI.Maui.RoutedViewHost();
+            return new ReactiveUI.Maui.RoutedViewHost() { Router = this.Router };
         }
     }
 }

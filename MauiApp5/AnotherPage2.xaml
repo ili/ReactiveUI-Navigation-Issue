@@ -6,7 +6,27 @@
              x:Class="MauiApp5.AnotherPage2"
              x:TypeArguments="vms:AnotherViewModel2">
 
-    <ScrollView>
+    <StackLayout>
         <Label Text="This is view model with story" />
-    </ScrollView>
+
+		<Button x:Name="BackBtn"
+                Text="Back"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+		<Button x:Name="ToMainBtn"
+                Text="To Main Page"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+		<Button Text="PopToRoot()"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+				Clicked="Button_Clicked"
+				/>
+
+	</StackLayout>
 </rxui:ReactiveContentPage>
